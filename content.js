@@ -1,23 +1,36 @@
-console.log("Content Script chargé.");
+function lireStatut() {
 
-function detecterStatut() {
-  // À adapter lorsque nous connaîtrons la structure du portail
-  const page = document.body.innerText;
+    const texte = document.body.innerText;
 
-  if (page.includes("en cours d'instruction")) {
-    return "En cours d'instruction";
-  }
+    const statuts = [
+        "Dossier reçu",
+        "Dossier enregistré",
+        "En cours d'instruction",
+        "Entretien",
+        "Décision favorable",
+        "Décision défavorable",
+        "Décret publié",
+        "Naturalisation accordée"
+    ];
 
-  if (page.includes("Décision favorable")) {
-    return "Décision favorable";
-  }
+    for (const statut of statuts) {
 
-  return "Statut inconnu";
+        if (texte.includes(statut)) {
+
+            chrome.runtime.sendMessage({
+                type: "STATUS_UPDATE",
+                status: statut
+            });
+
+            return;
+        }
+
+    }
+
 }
 
-const statut = detecterStatut();
+window.addEventListener("load", () => {
 
-chrome.runtime.sendMessage({
-  type: "STATUS",
-  data: statut
+    setTimeout(lireStatut, 3000);
+
 });
