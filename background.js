@@ -1,32 +1,64 @@
 chrome.runtime.onInstalled.addListener(() => {
-    console.log("Extension Naturalisation installée.");
+
+    chrome.storage.local.set({
+
+        status: "Dossier déposé",
+        history: [
+            {
+                date: new Date().toLocaleDateString("fr-FR"),
+                status: "Extension installée"
+            }
+        ]
+
+    });
+
 });
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
-    if (message.type === "STATUS_UPDATE") {
+// Vérification périodique
 
-        chrome.storage.local.get(["lastStatus"], (result) => {
+chrome.alarms.create("checkStatus", {
 
-            const oldStatus = result.lastStatus;
+    periodInMinutes: 60
 
-            if (oldStatus !== message.status) {
+});
 
-                chrome.storage.local.set({
-                    lastStatus: message.status
-                });
 
-                chrome.notifications.create({
-                    type: "basic",
-                    iconUrl: "icons/icon128.png",
-                    title: "Naturalisation",
-                    message: "Nouveau statut : " + message.status
-                });
+
+chrome.alarms.onAlarm.addListener((alarm) => {
+
+
+    if (alarm.name === "checkStatus") {
+
+
+        chrome.storage.local.get(
+            ["status"],
+            (data) => {
+
+
+                if (data.status) {
+
+
+                    chrome.notifications.create({
+
+                        type: "basic",
+                        iconUrl: "icons/icon48.png",
+                        title: "Suivi Naturalisation ANEF",
+                        message:
+                        "Votre dossier est actuellement : "
+                        + data.status
+
+                    });
+
+
+                }
+
 
             }
+        );
 
-        });
 
     }
+
 
 });
