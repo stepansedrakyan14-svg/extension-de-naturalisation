@@ -1,0 +1,35 @@
+body{
+    width:320px;
+    padding:20px;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f5f5;
+}
+
+h2{
+    color:#0055A4;
+    margin-top:0;
+}
+
+#status{
+    margin:20px 0;
+    padding:15px;
+    background:white;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:bold;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    border:none;
+    background:#0055A4;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+button:hover{
+    background:#003f7d;
+}
