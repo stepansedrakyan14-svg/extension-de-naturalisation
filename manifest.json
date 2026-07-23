@@ -1,36 +1,38 @@
 {
   "manifest_version": 3,
-  "name": "Suivi Naturalisation",
+  "name": "Extension de suivi de naturalisation",
   "version": "1.0.0",
-  "description": "Extension permettant de suivre une demande de naturalisation.",
-  "action": {
-    "default_popup": "popup.html"
-  },
-  "background": {
-    "service_worker": "background.js"
+  "description": "Suivi de l'état d'une demande de naturalisation sur le portail ANEF.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "permissions": [
     "storage",
     "notifications",
-    "tabs"
+    "tabs",
+    "activeTab"
   ],
   "host_permissions": [
-    "<all_urls>"
+    "https://administration-etrangers-en-france.interieur.gouv.fr/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Suivi Naturalisation",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://administration-etrangers-en-france.interieur.gouv.fr/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
   ]
-}
-,
-"content_scripts": [
-  {
-    "matches": [
-      "<all_urls>"
-    ],
-    "js": [
-      "content.js"
-    ]
-  }
-]
-"icons": {
-  "16": "icons/icon16.png",
-  "48": "icons/icon48.png",
-  "128": "icons/icon128.png"
 }
