@@ -1,41 +1,50 @@
-function lireStatut() {
+function recupererANEF() {
 
     const texte = document.body.innerText;
 
-    const statuts = [
+
+    if (!texte.includes("Demande d'accès à la Nationalité Française")) {
+        return;
+    }
+
+
+    let statut = "Inconnu";
+
+
+    const correspondances = [
         "Examen des pièces en cours",
         "Demande de complément",
-        "En cours d'instruction",
+        "Instruction",
         "Entretien",
         "Décision favorable",
         "Décision défavorable",
-        "Décret publié",
         "Naturalisation accordée"
     ];
 
-    for (const statut of statuts) {
 
-        if (texte.includes(statut)) {
+    for (const mot of correspondances) {
 
-            chrome.runtime.sendMessage({
-                type: "STATUS_UPDATE",
-                status: statut
-            });
-
-            console.log("Statut détecté :", statut);
-
-            return;
+        if (texte.includes(mot)) {
+            statut = mot;
+            break;
         }
 
     }
 
-    console.log("Aucun statut détecté");
+
+    chrome.runtime.sendMessage({
+
+        type: "ANEF_STATUS",
+
+        data: {
+            statut: statut,
+            date: new Date().toLocaleString("fr-FR")
+        }
+
+    });
+
 
 }
 
 
-window.addEventListener("load", () => {
-
-    setTimeout(lireStatut, 3000);
-
-});
+setTimeout(recupererANEF, 3000);
