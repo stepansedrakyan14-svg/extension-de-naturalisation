@@ -3,8 +3,8 @@ function lireStatut() {
     const texte = document.body.innerText;
 
     const statuts = [
-        "Dossier reçu",
-        "Dossier enregistré",
+        "Examen des pièces en cours",
+        "Demande de complément",
         "En cours d'instruction",
         "Entretien",
         "Décision favorable",
@@ -22,12 +22,17 @@ function lireStatut() {
                 status: statut
             });
 
+            console.log("Statut détecté :", statut);
+
             return;
         }
 
     }
 
+    console.log("Aucun statut détecté");
+
 }
+
 
 window.addEventListener("load", () => {
 
