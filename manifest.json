@@ -1,22 +1,21 @@
 {
   "manifest_version": 3,
-  "name": "Statut API du Dossier Naturalisation",
-  "version": "3.7.7",
-  "description": "Statut API du Dossier Naturalisation",
-  "permissions": [
-    "scripting",
-    "activeTab"
-  ],
-  "host_permissions": [
-    "https://administration-etrangers-en-france.interieur.gouv.fr/*"
-  ],
-  "content_scripts": [{
-    "matches": ["https://administration-etrangers-en-france.interieur.gouv.fr/*"],
-    "js": ["inject.js"],
-    "run_at": "document_end"
-  }],
-  "web_accessible_resources": [{
-    "resources": ["content.js", "crypto-js.min.js", "forge.min.js"],
-    "matches": ["https://administration-etrangers-en-france.interieur.gouv.fr/*"]
-  }]
+  "name": "Suivi Naturalisation ANEF",
+  "version": "1.0",
+  "description": "Suivi automatique de l'état d'une demande de naturalisation.",
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  }
 }
