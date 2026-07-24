@@ -118,3 +118,54 @@ function displayHistory(history){
     });
 
 }
+// Réception automatique du statut depuis ANEF
+
+chrome.runtime.onMessage.addListener(
+    (message) => {
+
+        if(message.type === "STATUS_UPDATE") {
+
+            const newStatus = message.status;
+
+            const date = new Date().toLocaleDateString("fr-FR");
+
+
+            chrome.storage.local.get(
+                ["history"],
+                (data) => {
+
+                    let history = data.history || [];
+
+
+                    // éviter les doublons
+                    if(history.length === 0 || history[0].status !== newStatus){
+
+                        history.unshift({
+                            date: date,
+                            status: newStatus
+                        });
+
+                    }
+
+
+                    chrome.storage.local.set({
+
+                        status: newStatus,
+                        history: history
+
+                    });
+
+
+                    statusSelect.value = newStatus;
+
+                    updateProgress(newStatus);
+
+                    displayHistory(history);
+
+                }
+            );
+
+        }
+
+    }
+);
