@@ -29,3 +29,18 @@
     }
   ]
 }
+,
+"content_scripts": [
+  {
+    "matches": [
+      "https://administration-etrangers-en-france.interieur.gouv.fr/*"
+    ],
+    "js": [
+      "content.js"
+    ]
+  }
+],
+"permissions": [
+  "storage",
+  "activeTab"
+]
