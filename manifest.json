@@ -18,5 +18,5 @@
   "web_accessible_resources": [{
     "resources": ["content.js", "crypto-js.min.js", "forge.min.js"],
     "matches": ["https://administration-etrangers-en-france.interieur.gouv.fr/*"]
-  }],
+  }]
 }
