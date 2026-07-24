@@ -1,23 +1,36 @@
-# 🇫🇷 Extension de Suivi de Naturalisation
+<h1>Installation </h1>
 
-Extension Chrome permettant de suivre automatiquement l'évolution d'une demande de naturalisation sur le portail ANEF.
+Vidéo tutorielle sur YouTube (je ne suis pas le propriétaire des chaînes) : 
 
-## Fonctionnalités
+FR : <a href="https://www.youtube.com/watch?v=WhW91uf_bVI">https://www.youtube.com/watch?v=WhW91uf_bVI</a>
 
-- Consultation du dernier statut détecté
-- Notification lors d'un changement
-- Sauvegarde du dernier statut
-- Interface simple
+AR : <a href="https://www.youtube.com/watch?v=vaitOnjyNFQ">https://www.youtube.com/watch?v=vaitOnjyNFQ</a>
 
-## Installation
+1. Télécharger le <a href="https://github.com/divisi0n/status_naturalisation/releases"> fichier ZIP </a> , décompress le zip pour obtenir le dossier
 
-1. Télécharger le projet
-2. Ouvrir Chrome
-3. Aller sur chrome://extensions
-4. Activer le Mode développeur
-5. Charger l'extension non empaquetée
-6. Sélectionner ce dossier
 
-## Licence
+2. Rend-toi sur : chrome://extensions
 
-MIT
+
+3. En haut à droite, clique pour activer le "Mode Développeur"
+   
+![image](https://github.com/user-attachments/assets/1c26f75b-963f-473b-a898-0c44e82eba9e)
+
+
+4. En haut à gauche, clique sur "Charger l'extension non empaquetée" puis sélectionne ton dossier d'extension
+
+
+![image](https://github.com/user-attachments/assets/6f13ef5b-e365-449d-94f1-d541449855c5)
+
+
+Et voilà, l'extension est installé et utilisable sur ton Chrome 🎉
+
+ <img width="1238" height="719" alt="image" src="https://github.com/user-attachments/assets/765a1518-9072-4182-ad56-58ab22a88200" />
+
+
+<h1>Solution altérnative 1 : ANEF Status Tracker </h1>
+<a href="https://chromewebstore.google.com/detail/anef-status-tracker/icnpklneeaiffilemaflccdejefpehek">Installer depuis le Chrome Web Store</a> — installation en un clic, mises à jour automatiques <br/> (source : https://github.com/Letranger-dev/anef-extension)
+
+<h1>Solution altérnative 2 : Décodeur ANEF</h1>
+
+<a href="https://chromewebstore.google.com/detail/d%C3%A9codeur-anef/pjoihdhlbdlgdiamkfdddkkcdpghmaed">Installer depuis le Chrome Web Store</a> — installation en un clic + alertes <br/> (source : [https://naturalisation-facile.fr/installer-extension-decodeur-anef](https://naturalisation-facile.fr/installer-extension-decodeur-anef))
