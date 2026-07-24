@@ -3,21 +3,26 @@
   "name": "Suivi Naturalisation ANEF",
   "version": "2.0.0",
   "description": "Suivi des étapes d'une demande de naturalisation ANEF avec historique et notifications.",
+
   "permissions": [
     "storage",
     "notifications",
     "alarms"
   ],
+
   "host_permissions": [
     "https://administration-etrangers-en-france.interieur.gouv.fr/*"
   ],
+
   "action": {
     "default_popup": "popup.html",
     "default_title": "Suivi Naturalisation ANEF"
   },
+
   "background": {
     "service_worker": "background.js"
   },
+
   "content_scripts": [
     {
       "matches": [
@@ -29,18 +34,3 @@
     }
   ]
 }
-,
-"content_scripts": [
-  {
-    "matches": [
-      "https://administration-etrangers-en-france.interieur.gouv.fr/*"
-    ],
-    "js": [
-      "content.js"
-    ]
-  }
-],
-"permissions": [
-  "storage",
-  "activeTab"
-]
