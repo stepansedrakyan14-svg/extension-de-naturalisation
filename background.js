@@ -1,64 +1,49 @@
-chrome.runtime.onInstalled.addListener(() => {
+chrome.runtime.onMessage.addListener(
+    (message) => {
 
-    chrome.storage.local.set({
+        if (message.type === "ANEF_STATUS") {
 
-        status: "Dossier déposé",
-        history: [
-            {
-                date: new Date().toLocaleDateString("fr-FR"),
-                status: "Extension installée"
-            }
-        ]
+            chrome.storage.local.get(
+                ["history"],
+                (data) => {
 
-    });
+                    let history = data.history || [];
 
-});
-
-
-// Vérification périodique
-
-chrome.alarms.create("checkStatus", {
-
-    periodInMinutes: 60
-
-});
+                    const nouveau = {
+                        date: message.data.date,
+                        status: message.data.statut
+                    };
 
 
+                    // éviter les doublons
+                    if (
+                        history.length === 0 ||
+                        history[0].status !== nouveau.status
+                    ) {
 
-chrome.alarms.onAlarm.addListener((alarm) => {
+                        history.unshift(nouveau);
 
-
-    if (alarm.name === "checkStatus") {
-
-
-        chrome.storage.local.get(
-            ["status"],
-            (data) => {
-
-
-                if (data.status) {
+                    }
 
 
-                    chrome.notifications.create({
+                    chrome.storage.local.set({
 
-                        type: "basic",
-                        iconUrl: "icons/icon48.png",
-                        title: "Suivi Naturalisation ANEF",
-                        message:
-                        "Votre dossier est actuellement : "
-                        + data.status
+                        status: nouveau.status,
+                        lastCheck: nouveau.date,
+                        history: history
 
                     });
 
 
+                    console.log(
+                        "ANEF détecté :",
+                        nouveau.status
+                    );
+
                 }
+            );
 
-
-            }
-        );
-
+        }
 
     }
-
-
-});
+);
