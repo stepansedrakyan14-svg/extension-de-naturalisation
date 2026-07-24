@@ -169,3 +169,16 @@ chrome.runtime.onMessage.addListener(
 
     }
 );
+chrome.runtime.onMessage.addListener(
+    (message) => {
+
+        if(message.type === "STATUS_UPDATE") {
+
+            const newStatus = message.status;
+
+            const date = new Date().toLocaleDateString("fr-FR");
+
+            ...
+        }
+    }
+);
