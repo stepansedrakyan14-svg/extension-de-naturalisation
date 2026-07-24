@@ -1,3 +1,4 @@
+console.log("✅ Suivi Naturalisation ANEF chargé");
 (async function () {
   const CONFIG = {
     URL_PATTERN: "administration-etrangers-en-france",
